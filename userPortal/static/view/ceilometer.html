@@ -1,0 +1,90 @@
+<div>
+    <div id="title">
+        <h1>监控概况</h1>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#meters" data-toggle="tab" data-target="#meters">Meters</a></li>
+        <li><a href="#alarm" data-toggle="tab" data-target="#alarm">Alarms</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane fade in active" id="meters">
+            <br />
+            <div>
+                <table ng-table="meterstableParams" class="table table-bordered table-striped" >
+                    <thead>
+                        <tr>
+                            <th ng-click="sort('Name')">Name
+                                <span class="glyphicon sort-icon" ng-show="sortKey == 'Name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </th>
+                            <th>IP</th>
+                            <th>CPU使用率(%)</th>
+                            <th>Memory(MB)</th>
+                            <th>Memory usage</th>
+                            <th>Disk Read(B/S)</th>
+                            <th>Disk Write(B/S)</th>
+                            <th>Network Incoming(B/s)</th>
+                            <th>Network Outgoint(B/s)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="info in $data | filter:search | orderBy:sortKey:reverse">
+                            <td>[[ info.name ]]</td>
+                            <td>[[ info.ip ]]</td>
+                            <td>[[ info.CpuUtil ]]</td>
+                            <td>[[ info.Memory ]]</td>
+                            <td>[[ info.MemoryUsage ]]</td>
+                            <td>[[ info.DiskReadRate ]]</td>
+                            <td>[[ info.DiskWriteRate ]]</td>
+                            <td>[[ info.NetInRate]]</td>
+                            <td>[[ info.NetOutRate]]</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                Displaying [[ $data.length ]] item
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="alarm">
+            <div class="option">
+                <button id="gobutton" type="submit" ng-click="createAlarm()"  class="btn btn-primary">
+                        <span><i class="fa fa-user-plus"></i>Create Alarm</span>
+                </button>
+                <br />
+            </div>
+            <div>
+                <table ng-table="AlarmstableParams" class="table table-bordered table-striped" >
+                    <thead>
+                        <tr>
+                            <th ng-click="sort('Name')">Name
+                                <span class="glyphicon sort-icon" ng-show="sortKey == 'Name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                            </th>
+                            <th>Description</th>
+                            <th>State</th>
+                            <th>Alarm Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr ng-repeat="alarm in $data | filter:search | orderBy:sortKey:reverse">
+                            <td>[[ alarm.name ]]</td>
+                            <td>[[ alarm.description ]]</td>
+                            <td>[[ alarm.state ]]</td>
+                            <td>[[ alarm.alarm_actions ]]</td>
+                        </tr>
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td>
+                                Displaying [[ $data.length ]] item
+                            </td>
+                        </tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

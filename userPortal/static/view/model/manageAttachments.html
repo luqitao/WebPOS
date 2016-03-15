@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+    <div>
+        <h2>管理已连接云硬盘</h2>
+        <hr />
+        <table id='attach_tab' class="table table-bordered table-striped">
+            <tr>
+                <th>连接状态</th>
+                <th>Action</th>
+            </tr>
+            <tr>
+                <td><p ng-hide="data.attachments==''">Attched to [[ data.attachments[0].server_id ]] on [[ data.attachments[0].device ]]<p></td>
+                <td>
+                    <button id="gobutton" type="submit" ng-click="detachVolume(data.attachments)" class="btn btn-default" ng-hide="data.attachments==''">Detach</button>
+                </td>
+            </tr>
+        </table>
+        <hr />
+        <div ng-show="data.attachments==''">
+            <h2>连接到云主机</h2>
+            <span>
+                请选择一个云主机：
+                <select class="input-block-level" ng-model="instance_id" ng-options="instacne.id as instacne.name for instacne in instanceList "></select>
+            </span>
+        </div>
+        <hr />
+        <span class="marginBottom">
+            <button class="btn btn-default unusable" ng-click="cancelAttachVolume()">取消 </button>
+            <button class="btn btn-default" ng-click="attachVolume()" ng-show="data.attachments==''">连接云硬盘 </button>
+        </span>
+    </div>
+</body>
+</html>

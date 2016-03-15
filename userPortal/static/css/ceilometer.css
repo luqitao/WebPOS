@@ -1,0 +1,16 @@
+div > h1 {
+    text-align: left;
+    color: #666666;
+    /*font-size: 36px;*/
+}
+
+.quota-heading {
+    font-weight: normal;
+    font-size: 24px;
+    text-align: left;
+    margin-bottom: 10px;
+}
+
+div.container {
+    text-align: center;
+}

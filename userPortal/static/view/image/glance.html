@@ -1,0 +1,60 @@
+
+
+<div class="container">
+	<h1>Image</h1>
+	<ol class="breadcrumb">
+		<li><a href="#">Image</a></li>
+		<li class="acttive">Image List</li>
+	</ol>
+	<div id="body-content" class="container">
+
+	    <button type="button" class="btn btn-primary" ng-controller="createImageCtrl" ng-click="createButtonClicked()" >
+	        <span><i class="fa fa-user-plus"></i> Add Image</span>
+	    </button>
+	    <button type="button" class="btn btn-danger" ng-controller="deleteImageCtrl" ng-click="deleteButtonClicked()" ng-disabled="selected.length==0" >
+	        <span><i class="fa fa-close"></i> Delete Image</span>
+	    </button>
+        <td bgcolor="#00BCD4">Filter By Image Name =>>  </td>
+             <td> <input type="text" ng-model="search.name" /></td>
+		<table class="table table-striped" >
+			<thead>
+            <tr>
+            <th width="40px"><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+             <th>
+                <a href="" ng-click="order('name')">Name</a>
+             </th>
+             <th><a href="" ng-click="order('type')"> Type</a> </th>
+             <th><a href="" ng-click="order('status')">Status</a> </th>
+               <th><a href="" ng-click="order('public')">Public</a> </th>
+               <th><a href="" ng-click="order('protect')">Protected</a> </th>
+               <th><a href="" ng-click="order('format')">Format</a> </th>
+               <th><a href="" ng-click="order('config')">Config</a> </th>
+               <th><a href="" ng-click="order('action')">Action</a> </th>
+           </tr>
+			</thead>
+			<tbody>
+            <tr ng-repeat="image in imageList | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=image.id name="checkbox" value="checkbox"   ng-checked="isSelected(image.id)" ng-click="updateSelection($event,image.id)"/></td>
+             <td> [[ image.name]]</td>
+             <td>[[image.image_type]]</td>
+            <td>[[ image.status]]</td>
+               <td>[[ image.visibility]]</td>
+            <td>[[ image.protected]]</td>
+             <td>[[ image.disk_format]]</td>
+             <td>[[ image.size]]</td>
+                <td>
+					<div class="btn-group">
+						  	<button type="button" class="btn btn-default" ng-controller="editImageCtrl" ng-click="editImageButtonClicked(image)">Edit </button>
+                    </div>
+                </td>
+
+            </tr>
+			</tbody>
+		</table>
+        <pagination total-items="totalItems" ng-model="currentPage"
+             max-size="5" boundary-links="true"
+            items-per-page="numPerPage" class="pagination-sm">
+     </pagination>
+	</div>
+
+</div>

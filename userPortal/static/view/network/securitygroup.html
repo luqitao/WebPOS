@@ -1,0 +1,48 @@
+
+    <div ng-controller="groupCtrl" class="container">
+        <h1>Security Group</h1>
+	    <ol class="breadcrumb">
+		    <li><a href="#">Security Group</a></li>
+		    <li class="acttive">list security group</li>
+	    </ol>
+        <div class="container">
+            <input type="text" ng-model="search.name">
+            <button type="button" class="btn btn-primary" ng-click="createGroup()" ng-controller="creteGroupCtrl" >
+	        <span><i class="fa fa-user-plus"></i> Create Security Group</span>
+	        </button>
+	        <button type="button" class="btn btn-danger" ng-click="delGroup()" ng-controller="delGroupCtrl"  ng-disabled="selected.length==0">
+	        <span><i class="fa fa-close"></i> Delete Security Group</span>
+	        </button>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th><a href="" ng-click="order('description')">Description</a> </th>
+                <th><a href="" ng-click="order('edit')">Edit</a> </th>
+                <th><a href="" ng-click="order('action')">Action</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="group in groups | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=group.id name="checkbox" value="checkbox"   ng-checked="isSelected(group.id)" ng-click="updateSelection($event,group.id)"/></td>
+                <td>[[ group.name]]</td>
+                <td>[[ group.description]]</td>
+                <td>
+                    <input type="button" value="Edit" class="btn btn-primary"  ng-click="editGroup(group)" ng-controller="editCtrl" />
+                </td>
+                <td>
+                    <input type="button" value="Add Rules" class="btn btn-primary"  ng-click="addRules(group)" ng-controller="addsgruleCtrl" />
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+        </div>
+    </div>

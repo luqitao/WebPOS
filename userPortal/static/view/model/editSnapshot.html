@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Snapshot</title>
+</head>
+<body>
+    <div>
+        <h2>编辑快照</h2>
+        <form name="cubeForm">
+            <div>
+                <span>快照名称</span>
+                <span class="text"><input ng-model="editsnapshot.name" type="text" placeholder=""  required></span>
+            </div>
+            <div>
+                <span>描述</span>
+                <span class="text"><input ng-model="editsnapshot.description" type="text" placeholder=""  required>
+                </span>
+            </div>
+        </form>
+        <span class="marginBottom">
+            <button class="btn btn-default unusable" ng-click="cancelEditSnapshot()">取消 </button>
+            <button class="btn btn-default" ng-click="updateSnapshot()" ng-disabled="edit.size < oldsize">更新云硬盘 </button>
+        </span>
+    </div>
+</body>
+</html>

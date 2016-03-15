@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建用户</title>
+    <link rel='stylesheet' href="../static/css/createUser.css">
+</head>
+<body>
+ <div>
+            <h2>创建用户</h2>
+     <hr>
+            <form name="cubeForm">
+                <div class="cubeFormleft">
+                    <div>
+                        <span>用户名*</span>
+                        <span class="text"><input ng-model="user_data.name" type="text" placeholder=""  required></span>
+                    </div>
+                    <div>
+                        <span>邮箱</span>
+                        <span class="text"><input ng-model="user_data.email" type="text" placeholder=""  >
+                        </span>
+                    </div>
+                    <div>
+                        <span>密码*</span>
+                        <span class="text"><input ng-model="user_data.password" type="password" placeholder=""  required >
+                        </span>
+                    </div>
+                    <div>
+                        <span>确认密码*</span>
+                        <span class="text"><input ng-model="user_data.confirmPassword" type="text" placeholder=""  required>
+                        </span>
+                    </div>
+                    <div>
+                        <span>主项目*</span>
+                         <span class="text" ng-controller="projectCtr">
+                             <select  id="sel"   class="input-block-level" ng-model="user_data.default_project_id"   ng-options="obj.id as obj.name for obj in project_dropdown_list" required>
+                             </select>
+                         </span>
+                    </div>
+                   <div>
+                        <span>角色*</span>
+                         <span class="text" ng-controller="userRoleCtr">
+
+                             <select id="sel"  class="input-block-level" ng-model="user_data.role"   ng-options="obj.id as obj.name for obj in user_role_dropdown_list" required="">
+                             </select>
+
+                              </span>
+                    </div>
+               </div>
+                <div class="cubeFormright">创建用户,并设置用户属性<br></div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default " ng-click="cancelCreateUser()">取消 </button>
+                <button class="btn btn-default" ng-click="createUser()">创建用户 </button>
+            </span>
+        </div>
+<!--
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#a" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#b" data-toggle="tab">Profile</a></li>
+      <li role="presentation"><a href="#c" data-toggle="tab">Messages</a></li>
+    </ul>
+ <div class="tab-content">
+    <div  class="tab-pane fade in active" id="a">1</div>
+    <div class="tab-pane fade" id="b">2</div>
+    <div class="tab-pane fade" id="c">3</div>
+     </div>
+-->
+</body>
+</html>

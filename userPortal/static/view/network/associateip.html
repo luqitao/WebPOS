@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Manage Floating IP Associations</h2>
+            <form name="cubeForm">
+
+                <div>
+                    <span>IP Address</span>
+                    <span class="text">
+                        <div >
+                            <select class="input-block-level" ng-model="data.ip" ng-options="x.id as x.name for x in ips ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Port to Associate</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level" ng-model="data.port" ng-options="x.id as x.name for x in ports ">
+                            <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="associateIP()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

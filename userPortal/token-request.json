@@ -1,0 +1,19 @@
+{
+    "auth": {
+        "identity": {
+            "methods": [
+                "password"
+            ],
+            "password": {
+                "user": {
+                    "domain": {
+                        "name": "Default"
+                    },
+                    "name": "admin",
+                    "password": "Abc12345"
+                }
+            }
+        }
+    }
+}
+

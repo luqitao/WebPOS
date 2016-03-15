@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Remove Router from Firewall</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>FireWall Name</span>
+                    <span class="text"><input ng-model="data.name" ng-disabled = "true" ></span>
+                </div>
+
+                <div>
+                    <span>Router to Remove</span>
+                    <span class="text">
+                        <div >
+                            <select class="input-block-level" ng-model="data.router" ng-options="x.id as x.name for x in routers ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="removeRouter()">Remove </button>
+            </span>
+        </div>
+</body>
+</html>

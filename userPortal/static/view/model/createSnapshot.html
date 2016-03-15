@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Snapshot</title>
+</head>
+<body>
+    <div>
+        <h2>创建云硬盘快照</h2>
+        <form name="cubeForm">
+            <div>
+                <span>快照名称</span>
+                <span class="text"><input ng-model="data.name" type="text" placeholder=""  required></span>
+            </div>
+            <div>
+                <span>描述</span>
+                <span class="text"><input ng-model="data.description" type="text" placeholder=""  required>
+                </span>
+            </div>
+
+        </form>
+        <span class="marginBottom">
+            <button class="btn btn-default unusable" ng-click="cancelCreateSnapshot()">取消 </button>
+            <button class="btn btn-default" ng-click="createSnapshot()">创建云硬盘快照 </button>
+        </span>
+    </div>
+</body>
+</html>

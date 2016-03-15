@@ -1,0 +1,27 @@
+{% load staticfiles %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel='stylesheet' href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+    <link rel='stylesheet' href="{% static 'lib/components-font-awesome/css/font-awesome.min.css' %}">
+    <script type="text/javascript" src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+    <script>
+        function iamloaded(element) {
+            var svg = element.getSVGDocument();
+            console.info(svg);
+            var svgj = $(svg);
+            console.info(svgj);
+            svgj.onclick(function() {
+
+            })
+        }
+    </script>
+</head>
+<body>
+    <embed id="svgobject" src="http://localhost:8000/portal/image" type="image/svg+xml" onload="iamloaded(this)">
+    </embed>
+</body>
+</html>

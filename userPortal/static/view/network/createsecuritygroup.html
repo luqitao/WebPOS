@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Create Security Group</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+
+                <div>
+                    <span>Description</span>
+                    <span class="text">
+                        <textarea ng-model="data.description">
+                        </textarea>
+                    </span>
+                </div>
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="creategroupsecurity()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

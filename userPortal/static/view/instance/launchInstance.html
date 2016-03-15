@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Launch Instance</title>
+    <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div>
+            <h2>启动云主机</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>可用域</span>
+                    <span class="text"><input ng-model="data.available_zone" type="text" placeholder=""  ></span>
+                </div>
+                <div>
+                    <span>云主机名称</span>
+                    <span class="text"><input ng-model="data.name" type="text" placeholder=""  required>
+                    </span>
+                </div>
+
+                <div>
+                    <span>云主机类型</span>
+                    <span class="text">
+                        <div ng-controller="flavorCtr">
+                            <select id="sel"  class="input-block-level" ng-model="data.flavorRef" ng-options="obj.id as obj.name for obj in flavor_list">
+                            </select>
+                             <!-- ng-model value: [[data.flavorRef  ]] -->
+                        </div>
+
+                    </span>
+                </div>
+
+                <div>
+                    <span>云主机数量</span>
+                    <span class="text"><input ng-model="data.instanceNum" type="NUMBER" placeholder="" required>
+                    </span>
+                </div>
+                <div>
+                    <span>云主机启动源</span>
+                     <span class="text">
+                            <select id="sel" class="input-block-level" ng-model="data.boot_source">
+                            <option>Booot from image</option>
+                            </select>
+                     </span>
+                </div>
+                <div>
+                    <span>云主机网络</span>
+                    <span class="text">
+                         <div ng-controller="networkNameCtr">
+                            <select id="sel" class="input-block-level" ng-model="data.networks" ng-options="obj.id as obj.name for obj in network_list" multiple>
+                            </select>
+                         </div>
+
+                    </span>
+                </div>
+                <div>
+                    <span>云主机网络端口</span>
+                    <span class="text">
+                         <div ng-controller="networkPortCtr">
+                            <select id="sel" class="input-block-level" ng-model="data.networksport" ng-options="obj.id as obj.name for obj in network_port_list" multiple >
+                            </select>
+                         </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>镜像名称</span>
+                    <span class="text">
+                       <div ng-controller="imageNameCtr">
+                            <select id="sel" class="input-block-level" ng-model="data.imageRef" ng-options="obj.id as obj.name for obj in imageName_list" >
+
+                            </select>
+                       </div>
+                    </span>
+                    <!-- <option>yezhiqinUpdatezzz</option>
+                                <!-- 37908001-5caf-4a48-825c-50c46a96851f--> -->
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default " ng-click="cancelLaunchInstance()">取消 </button>
+                <button class="btn btn-default" ng-click="launchInstanceClicked()">运行 </button>
+            </span>
+        </div>
+</body>
+</html>

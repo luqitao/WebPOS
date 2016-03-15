@@ -1,0 +1,26 @@
+<div class='container forLogin'>
+    <div class="logo">
+        <p>&nbsp</p>
+    </div>
+    <div class="login-form">
+        <form>
+            <div>
+                <input class="userInput" type="text" name="username" placeholder="USERNAME" value="" required="" autofocus="" ng-model="data.username" />
+            </div>
+            <div>
+                <input class="userInput" type="password" name="password" placeholder="PASSWORD" value="" required="" ng-model="data.password" />
+            </div>
+            <div ng-show="incorrect" class="login-incorrect" >
+                INCORRECT<strong>USERNAME</strong> OR<strong>PASSWORD</strong>
+            </div>
+            <br>
+            <br>
+            <div>
+                <input type="submit" value="LOGIN" ng-click="login()" />
+            </div>
+        </form>
+    </div>
+    <footer class="copy-right">
+        <p>&copy2015 FiberHome Inc. All right reserved</p> 
+    </footer>
+</div>

@@ -1,0 +1,65 @@
+
+    <div ng-controller="neutronCtrl" class="container">
+        <h1>Networks</h1>
+        <!--<ul class="nav nav-tabs ajax-tabs">-->
+            <!--<li class="active"><a href="/neutron/?tab=network_tab">Volumes</a></li>-->
+            <!--<li><a href="/volumes/?tab=snapshots_tab">Volume Snapshots</a></li>-->
+        <!--</ul>-->
+	    <ol class="breadcrumb">
+		    <li><a href="#">networks</a></li>
+		    <li class="acttive">list networks</li>
+	    </ol>
+        <div class="container">
+            <input type="text" ng-model="search.name">
+            <button type="button" class="btn btn-primary" ng-click="createNW()" ng-controller="createNWCtrl">
+	        <span><i class="fa fa-user-plus"></i> Create Network</span>
+	        </button>
+	        <button type="button" class="btn btn-danger" ng-click="deleteNW()" ng-controller="deleteNWCtrl" ng-disabled="selected.length==0">
+	        <span><i class="fa fa-close"></i> Delete Network</span>
+	        </button>
+            <!--<button type="button" class="btn btn-primary" ng-click="addSubnet()" ng-controller="addSubCtrl" ng-disabled="selected.length==0">-->
+	        <!--<span><i class="fa fa-close"></i> Add Subnet</span>-->
+	        <!--</button>-->
+        </div>
+
+        <div>
+            <table id="network_tab" class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+                <!--<th><a href="" ng-click="order('id')">ID</a></th>-->
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th><a href="" ng-click="order('subnet')"> Subnet Associated</a> </th>
+                <th><a href="" ng-click="order('shared')">Shared</a> </th>
+                <th><a href="" ng-click="order('status')">Status</a> </th>
+                <th><a href="" ng-click="order('admin_state_up')">State</a> </th>
+                <!--<th><a href="" ng-click="order('tenant_id')">Project</a> </th>-->
+                <th><a href="" ng-click="order('action')">Edit</a> </th>
+                <th><a href="" ng-click="order('action')">Add Subnet</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="network in networks | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=network.id name="checkbox" value="checkbox"   ng-checked="isSelected(network.id)" ng-click="updateSelection($event,network.id)"/></td>
+                <!--<td>[[ network.id]]</td>-->
+                <td><a href="/volumes/">[[ network.name]]</a></td>
+                <td>[[ network.subnets]]</td>
+                <td>[[ network.shared]]</td>
+                <td>[[ network.status]]</td>
+                <td>[[ network.admin_state_up]]</td>
+                <!--<td>[[ network.tenant_id]]</td>-->
+                <td>
+                    <input type="button" value="Edit" class="btn btn-primary" ng-controller="editNWorkCtrl" ng-click="editNW(network)"/>
+                </td>
+                  <td>
+                    <input type="button" value="Add Subnet" class="btn btn-primary" ng-controller="addSubCtrl" ng-click="addSubnet(network)" />
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+        </div>
+    </div>

@@ -1,0 +1,64 @@
+
+    <div ng-controller="fwCtrl" class="container">
+        <h1>FireWall</h1>
+	    <ol class="breadcrumb">
+		    <li><a href="#">Fire Wall</a></li>
+		    <li class="acttive">list filewall</li>
+	    </ol>
+        <div class="container">
+            <input type="text" ng-model="search.name">
+            <button type="button" class="btn btn-primary" ng-click="createFw()" ng-controller="createFwCtrl">
+	        <span><i class="fa fa-user-plus"></i> Create Firewall</span>
+	        </button>
+	        <button type="button" class="btn btn-danger" ng-click="deleteFw()"   ng-controller="delFwCtrl" ng-disabled="selected.length==0">
+	        <span><i class="fa fa-close"></i> Delete Firewall</span>
+	        </button>
+            <button type="button" class="btn btn-primary" ng-click="addPolicyBtn()"   ng-controller="addPolicyBtnCtrl" >
+	        <span><i class="fa fa-close"></i>Add Policy</span>
+	        </button>
+            <button type="button" class="btn btn-primary" ng-click="addRuleBtn()"   ng-controller="addRuleBtnCtrl" >
+	        <span><i class="fa fa-close"></i>Add Rule</span>
+	        </button>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th><a href="" ng-click="order('firewall_policy_id')">Policy</a> </th>
+                <th><a href="" ng-click="order('router_ids')">Router</a> </th>
+                <th><a href="" ng-click="order('status')">Status</a> </th>
+                <th><a href="" ng-click="order('admin_state_up')">Admin State</a> </th>
+                <th><a href="" ng-click="order('action')">Action</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="fw in fws | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=fw.id name="checkbox" value="checkbox"   ng-checked="isSelected(fw.id)" ng-click="updateSelection($event,fw.id)"/></td>
+                <!--<td>[[ network.id]]</td>-->
+                <td>[[ fw.name]]</td>
+                <td>[[ fw.firewall_policy_id ]]</td>
+                <td>[[ fw.router_ids]]</td>
+                <td>[[ fw.status]]</td>
+                <td>[[ fw.admin_state_up]]</td>
+                <!--<td>[[ network.tenant_id]]</td>-->
+                <td>
+                 <div ng-controller="firewallActionController">
+                    <div bs-dropdown
+                         bs-dropdown-display="MyDropDown"
+                         bs-dropdown-items="action"
+                         ng-model="selectAction"
+                         ng-change="changeAction(fw)"></div>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+        </div>
+    </div>

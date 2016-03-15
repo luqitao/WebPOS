@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Monitor</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Type</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.type">
+                            <option value="PING">PING</option>
+                            <option value="TCP">TCP</option>
+                            <option value="HTTP">HTTP</option>
+                            <option value="HTTPS">HTTPS</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span>Delay</span>
+                    <span class="text"><input ng-model="data.delay" type="number" min="1" placeholder="" required></span>
+                </div>
+                <div>
+                    <span>Timeout</span>
+                    <span class="text"><input ng-model="data.timeout" type="number" min="1" placeholder="" required></span>
+                </div>
+
+                <div>
+                    <span>Max Retries (1~10)</span>
+                    <span class="text"><input ng-model="data.max_retries" type="number"  min="1" max="10" placeholder="" required></span>
+                </div>
+
+                <div>
+                    <span>Admin State</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.admin_state_up">
+                            <option value="UP">UP</option>
+                            <option value="DOWN">DOWN</option>
+                        </select>
+                    </span>
+                </div>
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addMonitor()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

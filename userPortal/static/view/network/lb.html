@@ -1,0 +1,68 @@
+
+    <div ng-controller="lbCtrl" class="container">
+        <h1>Load Balancer</h1>
+	    <ol class="breadcrumb">
+		    <li><a href="#">Load Balancer</a></li>
+		    <li class="acttive">list load balancer</li>
+	    </ol>
+        <div class="container">
+            <input type="text" ng-model="search.name">
+            <button type="button" class="btn btn-primary" ng-click="addPool()" ng-controller="createpoolCtrl" >
+	        <span><i class="fa fa-user-plus"></i> Add Pool</span>
+	        </button>
+	        <button type="button" class="btn btn-danger" ng-click="deletePool()"  ng-controller="delpoolCtrl"   ng-disabled="selected.length==0">
+	        <span><i class="fa fa-close"></i> Delete Pool</span>
+	        </button>
+             <button type="button" class="btn btn-primary" ng-click="addMonitorBtn()"   ng-controller="addMonitorBtnCtrl" >
+	        <span><i class="fa fa-close"></i>Add Health Monitor</span>
+	        </button>
+            <button type="button" class="btn btn-primary" ng-click="addLbMemberBtn()"   ng-controller="addLbMemberBtnCtrl" >
+	        <span><i class="fa fa-close"></i>Add Members</span>
+	        </button>
+        </div>
+
+        <div>
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+                <!--<th><a href="" ng-click="order('id')">ID</a></th>-->
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th><a href="" ng-click="order('description')">Status</a> </th>
+                <th><a href="" ng-click="order('subnet')">Subet</a> </th>
+                <th><a href="" ng-click="order('protocol')">Protocol</a> </th>
+                <th><a href="" ng-click="order('health_monitors')">Monitors</a> </th>
+                <th><a href="" ng-click="order('members')">Members</a> </th>
+                <th><a href="" ng-click="order('admin_state_up')">State</a> </th>
+                <th><a href="" ng-click="order('action')">Edit</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="pool in pools | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=pool.id name="checkbox" value="checkbox"   ng-checked="isSelected(pool.id)" ng-click="updateSelection($event,pool.id)"/></td>
+                <!--<td>[[ network.id]]</td>-->
+                <td>[[ pool.name]]</td>
+                <td>[[ pool.description]]</td>
+                <td>[[ pool.subnet]]</td>
+                <td>[[ pool.protocol]]</td>
+                <td>[[ pool.health_monitors]]</td>
+                <td>[[ pool.members]]</td>
+                <td>[[ pool.admin_state_up]]</td>
+                <td>
+                 <div ng-controller="lbActionController">
+                    <div bs-dropdown
+                         bs-dropdown-display="MyDropDown"
+                         bs-dropdown-items="action"
+                         ng-model="selectAction"
+                         ng-change="changeAction(pool)"></div>
+                    </div>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+        </div>
+    </div>

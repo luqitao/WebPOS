@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Policy</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>Description</span>
+                    <span class="text"><input ng-model="data.description" ></span>
+                </div>
+
+                <div>
+                    <span>Rules</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level" ng-model="data.rule" ng-options="x.id as x.name for x in rules ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Shared</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.shared">
+                            <option value="YES" selected="selected">YES</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span>Audited</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.audited">
+                            <option value="YES" selected="selected">YES</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addPolicy()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

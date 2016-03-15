@@ -1,0 +1,200 @@
+  .odd {
+       background-color: antiquewhite;
+       color: #008b8b;
+     }
+     td{
+       height: 30px;
+       min-width: 30px;
+     }
+     th {
+       height: 30px;
+       font-size:small;
+         max-width: 5%;
+     }
+
+     /*th td>checkbox{*/
+          /*max-width: 10px;*/
+          /*min-width: 10px;*/
+     /*}*/
+     thead {
+       background-color: darkgray;
+       color: white;
+       height: 30px;
+     }
+
+
+/***FIRST STYLE THE BUTTON***/
+input#gobutton{
+cursor:pointer; /*forces the cursor to change to a hand when the button is hovered*/
+padding:5px 25px; /*add some padding to the inside of the button*/
+/*background:#35b128; /!*the colour of the button*!/*/
+    background:#00BCD4;
+border:1px solid #33842a; /*required or the default border for the browser will appear*/
+/*give the button curved corners, alter the size as required*/
+-moz-border-radius: 10px;
+-webkit-border-radius: 10px;
+border-radius: 10px;
+/*give the button a drop shadow*/
+-webkit-box-shadow: 0 0 4px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 4px rgba(0,0,0, .75);
+box-shadow: 0 0 4px rgba(0,0,0, .75);
+/*style the text*/
+/*color:#f3f3f3;*/
+font-size:1.1em;
+}
+/***NOW STYLE THE BUTTON'S HOVER AND FOCUS STATES***/
+input#gobutton:hover, input#gobutton:focus{
+/*background-color :#399630; /!*make the background a little darker*!/*/
+    background-color: #00BCD4;
+/*reduce the drop shadow size to give a pushed button effect*/
+-webkit-box-shadow: 0 0 1px rgba(0,0,0, .75);
+-moz-box-shadow: 0 0 1px rgba(0,0,0, .75);
+box-shadow: 0 0 1px rgba(0,0,0, .75);
+}
+
+.title {
+    margin: 0 30px;
+    color: #ffffff;
+    font-size: 36px;
+    text-align: left;
+    height: 60px;
+    line-height: 60px;
+}
+
+hr {
+	margin: 0 30px 30px 30px;
+}
+
+.block {
+   width: 100%;
+   background-color: #3a3a3b;
+   margin: 0 30px;
+   color: #ffffff;
+   width: 100%;
+   height: 100%;
+}
+
+.block > .wizard-steps > span{
+	background-color: #000000;
+	display: inline-block;
+	width: 30%;
+    margin: 20px 10px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.block > .wizard-steps > span.active{
+    background-color: #0db8df;
+}
+
+button.btn {
+    color: #ffffff;
+    background-color: #0db8df;
+    border: none;
+}
+
+.bigMargin {
+	margin: 20px;
+}
+
+.marginBottom {
+	margin-bottom: 40px;
+	display: inline-block;
+}
+
+form > div {
+	margin: 15px 0 15px 60px;
+	width: 100%;
+}
+
+form > div > span {
+	width: 15%;
+	text-align: right;
+	display: inline-block;
+	margin-right: 15px;
+}
+
+form > div > span.text {
+	width: 60%;
+	text-align: left;
+}
+
+form > div > span.text > input {
+    width: 60%;
+    border-radius: 4px;
+    /*border-style: solid;*/
+    color: #000000;
+    height: 30px;
+    padding-left: 20px;
+
+}
+
+.drop-box {
+	border: 1px dashed #DDD;
+	width: 45%;
+    margin: 25px auto;
+    padding: 25px;
+}
+
+.ready-box {
+    border: 1px dashed #DDD;
+    width: 45%;
+    margin: 25px auto;
+    padding: 71px;
+}
+
+.dragover {
+    border: 1px dashed blue;
+}
+
+.surroundMargin{
+	margin: 20px;
+}
+
+div.orHr > span {
+	background-color: #3a3a3b;
+	position: relative;
+    top: 9px;
+    display: inline-block;
+    width: 50px;
+}
+
+div.orHr > hr {
+	margin: 0 200px;
+}
+
+
+/*button.unusable {*/
+	/*background-color:#999999;*/
+/*}*/
+
+/*button.unusable:hover {*/
+    /*background-color:#999999;*/
+    /*color: #fff;*/
+/*}*/
+
+.modal-body > table {
+    margin: auto;
+}
+
+.modal-header > .close {
+    color: white;
+    opacity: 1;
+}
+
+
+.modal-footer > .btn.btn-default {
+    background-color: #fff;
+    color: #0db8df;
+    border: none;
+}
+
+
+
+div.container{
+    text-align: initial;
+}
+
+tbody > tr > td > div > button.dropdown-toggle {
+	height: 34px;
+}

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div>
+            <h2>创建一个镜像</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>名称</span>
+                    <span class="text"><input ng-model="image_data.name" type="text" placeholder=""  ></span>
+                </div>
+                <div>
+                    <span>描述</span>
+                    <span class="text"><input ng-model="image_data.description" type="text" placeholder=""  >
+                    </span>
+                </div>
+                <div>
+                    <span>镜像源</span>
+                     <span class="text">
+                     <div ng-controller="imageSourceCtr">
+                         <select id="sel"  class="input-block-level" ng-model="image_data.uri"   ng-options="obj.id as obj.name for obj in image_source_dropdown_list">
+                         </select>
+                     </div>
+                          </span>
+                </div>
+                <div>
+
+                    <span ng-show='1==1' >镜像文件</span>
+                    <span ng-show='image_data.uri==2' >镜像地址</span>
+                    <span class="text">
+                        <span class="text"><input ng-model="image_data.fileName" type="text" placeholder=""  >
+                        <!-- <input type="file" id="file" name="file" ONCHANGE="getFileNames()"/> -->
+                    </span>
+                        </span>
+                </div>
+                    <!--
+                    <span class="text"><input ng-model="data.address" type="text" placeholder=""  ></span>
+                    -->
+
+                <div>
+                    <span>镜像格式</span>
+                    <span class="text">
+                     <select id="sel"  class="input-block-level" ng-model="image_data.disk_format"  >
+                          <option>qcow2</option>
+                          <option>raw</option>
+                         </select>
+                        </span>
+                    <!-- <input ng-model="image_data.disk_format" type="text" placeholder=""  ></span> -->
+                </div>
+                <!--
+                <div>
+                    <span>架构</span>
+                    <span class="text"><input ng-model="image_data.arct" type="text" placeholder="" >
+
+                    </span>
+                </div>
+                <div>
+                    <span>最小磁盘(GB)</span>
+                    <span class="text"><input ng-model="image_data.min_disk" type="NUMBER" placeholder="" ></span>
+                </div>
+                <div>
+                    <span>最低内存</span>
+                    <span class="text"><input ng-model="image_data.lowest_memory" type="NUMBER" placeholder=""  ></span>
+                </div>
+                -->
+                 <div>
+                    <span>公用 </span><input type="checkbox" ng-model="image_data.visibility"/>
+                    <span class="text"></span>
+                </div>
+                <div>
+                    <span>受保护的</span><input type="checkbox"  ng-model="image_data.protected" />
+                    <span class="text"></span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default " ng-click="cancelCreateImage()">取消 </button>
+                <button class="btn btn-default" ng-click="createImage()">创建镜像 </button>
+            </span>
+        </div>
+</body>
+</html>

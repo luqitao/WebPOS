@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Security Group Rule</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Direction</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.direction">
+                            <option value="egress" selected="selected">Egress</option>
+                            <option value="igress">Igress</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Remote CIDR</span>
+                    <span class="text"><input ng-model="data.prefix" ></span>
+                </div>
+                <div>
+                    <label><input type="checkbox" ng-model="cb1"  ng-true-value=" 'tcp:1-65535' " ng-false-value=" 'false' " />All TCP(tcp 1-65535)</label><br/>
+                    <label><input ng-model="cb2" type="checkbox" ng-true-value=" 'udp:1-65535' " ng-false-value="'false'" />All UDP(udp 1-65535)</label><br/>
+                    <label><input ng-model="cb3" type="checkbox" ng-true-value=" 'icmp:0-0' " ng-false-value=" 'false' " />All ICMP（icmp） </label><br/>
+                    <label><input ng-model="cb4" type="checkbox" ng-true-value=" 'tcp:22-22' " ng-false-value=" 'false' " />SSH（tcp 22） </label><br/>
+                    <label><input ng-model="cb5" type="checkbox" ng-true-value=" 'tcp:80-80' " ng-false-value=" 'false' " />HTTP（tcp 80） </label><br/>
+                    <label><input ng-model="cb6" type="checkbox" ng-true-value=" 'tcp:443-443' " ng-false-value=" 'false' " />HTTPS（tcp 443） </label><br/>
+                    <label><input ng-model="cb7" type="checkbox" ng-true-value=" 'tcp:389-389' " ng-false-value=" 'false' " />LDAP（tcp 389） </label><br/>
+                    <label><input ng-model="cb8" type="checkbox" ng-true-value=" 'tcp:3306-3306' " ng-false-value=" 'false' " />MySQL（tcp 3306） </label><br/>
+                    <label><input ng-model="cb9" type="checkbox" ng-true-value=" 'tcp:20-21' " ng-false-value=" 'false' " />FTP（tcp 20-21） </label><br/>
+                    <label><input ng-model="cb10" type="checkbox" ng-true-value=" 'tcp:6379-6379' " ng-false-value=" 'false' " />Redis（tcp 6379）</label><br/>
+                </div>
+
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addRules()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

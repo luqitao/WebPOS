@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<form name="testForm" action="test.html" id="launchInstance">
+<ul type="text" id="selected_network">
+</ul>
+</form>
+
+</body>
+
+<script>
+    function on_click() {
+        var selected_network = document.getElementById('selected_network');
+        network = selected_network.getElementsByTagName('li');
+
+        var selected_network_port = document.getElementById('selected_network_port');
+        port = selected_network_port.getElementsByTagName('li');
+
+        if (network.length == 0 && port.length == 0)
+            alert('')
+        return false
+    else
+        document.getElementById("launchInstance").submit()
+    }
+</script>
+</html>

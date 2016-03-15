@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Update Network</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>ID</span>
+                    <span class="text"><input ng-model="data.id" ng-disabled="true" ></span>
+                </div>
+                <div>
+                    <span>Admin State</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.state" ng-options="sta.name as sta.name for sta in States">
+
+                        </select>
+                    </span>
+
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="createNW()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

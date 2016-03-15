@@ -1,0 +1,23 @@
+<!--pie-chart-->
+<pie-chart data="data" options="options"></pie-chart>
+
+<div>
+    <p>Input name in the input box:</p>
+    First Name: <input type="text" ng-model="firstName"><br>
+    Last Name: <input type="text" ng-model="lastName"><br>
+    <br>
+    <h1> Hello [[firstName + " " + lastName]] </h1>
+</div>
+<div>
+    <button ng-click="doGet()">發送GET</button>
+    [[ getValue ]]
+</div>
+<div>
+    <button ng-click="doPost()">發送POST</button>
+    [[ postValue ]]
+</div>
+<button ng-click="getToken()">get token</button>
+    [[ tokenStatus ]]
+<div>[['token: '+ token]]</div>
+
+

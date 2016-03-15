@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Pool</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name:</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>Description</span>
+                    <span class="text"><input ng-model="data.description" ></span>
+                </div>
+
+                <div>
+                    <span>Subnet</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level" ng-model="data.subnet_id" ng-options="x.id as x.name for x in subnets ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Protocol</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.protocol">
+                            <option value="HTTP">HTTP</option>
+                            <option value="HTTPS">HTTPS</option>
+                            <option value="TCP">TCP</option>
+                        </select>
+                    </span>
+                </div>
+
+               <div>
+                    <span>Load Balancing Method</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.lb_method">
+                            <option value="ROUND_ROBIN">ROUND_ROBIN</option>
+                            <option value="LEAST_CONNECTIONS">LEAST_CONNECTIONS</option>
+                            <option value="SOURCE_IP">SOURCE_IP</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Admin State</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.admin_state_up">
+                            <option value="UP">UP</option>
+                            <option value="DOWN">DOWN</option>
+                        </select>
+                    </span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addPool()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href="../static/css/createImage.css">
+
+</head>
+<body>
+ <div>
+            <h2>编辑镜像 </h2>
+            <form name="editForm" >
+                <input type="hidden" ng-model="edit.id" type="text">
+                <div>
+                    <span>名称</span>
+                    <span class="text"><input ng-model="edit.name" type="text" placeholder=""  required></span>
+                </div>
+                <div>
+                    <span>描述</span>
+                    <span class="text"><input ng-model="edit.description" type="text" placeholder=""  required>
+                    </span>
+                </div>
+                <div>
+                    <span>镜像源</span>
+                    <span class="text"><input ng-model="edit.uri" type="text" placeholder="" required></span>
+                </div>
+                <div>
+                    <span>镜像地址</span>
+                    <span class="text"><input ng-model="edit.address" type="text" placeholder="" required>
+                    </span>
+                </div>
+                <div>
+                    <span>镜像格式</span>
+                    <span class="text"><input ng-model="edit.disk_format" type="text" placeholder=""  required></span>
+                </div>
+                <div>
+                    <span>架构</span>
+                    <span class="text"><input ng-model="edit.arct" type="text" placeholder="" required>
+
+                    </span>
+                </div>
+                <div>
+                    <span>最小磁盘(GB)</span>
+                    <span class="text"><input ng-model="edit.smallest_disk" type="NUMBER" placeholder="" required></span>
+                </div>
+                <div>
+                    <span>最低内存</span>
+                    <span class="text"><input ng-model="edit.lowest_memory" type="NUMBER" placeholder=""  required></span>
+                </div>
+                 <div>
+                    <span>公用<input type="checkbox" ng-model="edit.public" ng-click="updateSelection($event,public)"  /></span>
+                    <span class="text"></span>
+                </div>
+                <div>
+                    <span>受保护的 <input type="checkbox"  ng-model="edit.protected" ng-click="updateSelection($event,protected)" /></span>
+                    <span class="text"></span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default " ng-click="cancelEditImage()">取消编辑 </button>
+                <button class="btn btn-default" ng-click="editImage()">确认编辑镜像 </button>
+            </span>
+        </div>
+</body>
+</html>

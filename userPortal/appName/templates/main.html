@@ -1,0 +1,85 @@
+{% load staticfiles %}
+{% csrf_token %}
+<!DOCTYPE html>
+<html ng-app="MyApp">
+    <head>
+        <meta charset="utf-8">
+        <base href="/">
+        <title>Fiberhome</title>
+        <link rel='stylesheet' href="{% static 'css/styles.css' %}">
+        <link rel='stylesheet' href="{% static 'lib/bootstrap/dist/css/bootstrap.min.css' %}">
+        <link rel='stylesheet' href="{% static 'lib/components-font-awesome/css/font-awesome.min.css' %}">
+        <link rel='stylesheet' href="{% static 'lib/pace/themes/white/pace-theme-flash.css' %}">
+        <link rel='stylesheet' href="{% static 'lib/ng-table/dist/ng-table.min.css' %}">
+
+    </head>
+    <body ng-controller="myCtrl">
+        <nav>
+            <ul>
+                <li class="brand">
+                    <span class="logo">&nbsp</span>
+                </li>
+
+                <li class="Admin" >
+                    <!-- bs-dropdown="AdminOptions" class="dropdown-toggle" -->
+                    <a href="#" >  {{ username }}<b class="caret"></b>
+                    </a>
+                </li>
+                <a class="Admin" target="_parent" href="/logout/" ng-click="logout()">Logout</a>
+            </ul>
+        </nav>
+        <aside>
+            <ul>
+
+                <li><a href="/ceilometer/"><span class="fa fa-briefcase"></span>&nbspOverview</a></li>
+                <li><a href="/instance/"><span class="fa fa-briefcase"></span>&nbspInstances</a></li>
+                <li><a href="/glance/"><span class="fa fa-briefcase"></span>&nbspImages</a></li>
+                <li><a href="/volumes/"><span class="fa fa-briefcase"></span>&nbspVolumes</a></li>
+                <li><a href="/neutron/"><span class="fa fa-briefcase"></span>&nbspNetwork</a></li>
+                <li><a href="/router/"><span class="fa fa-briefcase"></span>&nbspRouter</a></li>
+                <li><a href="/securitygroup/"><span class="fa fa-briefcase"></span>&nbspSecurity Group</a></li>
+                <li><a href="/loadbalancer/"><span class="fa fa-briefcase"></span>&nbspLoad Balancer</a></li>
+                <li><a href="/firewall/"><span class="fa fa-briefcase"></span>&nbspFirewall</a></li>
+                <li ng-show={{ user_role }}><a href="/user/"><span class="fa fa-user"></span>&nbspIdentity</a></li>
+                <li ng-show={{ user_role }}><a href="/project/"><span class="fa fa-user"></span>&nbspProject</a></li>
+{#                <li><a href="/test/"><span class="fa fa-check-circle"></span>&nbspTest</a></li>#}
+{#                <li><a href="/listTest/"><span class="fa fa-check-circle"></span>&nbsplistTest</a></li>#}
+            </ul>
+        </aside>
+        <div id="view">
+            <div ng-view></div>
+        </div>
+
+
+        <script type="text/javascript" src="{% static 'lib/jquery/dist/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/pace/pace.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/angular.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/angular-route.min.js' %}"> </script>
+        <script type="text/javascript" src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/angular-route-styles/route-styles.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'lib/angular-bootstrap/ui-bootstrap-tpls.min.js' %}"> </script>
+        <script type="text/javascript" src="{% static 'lib/angular-bootstrap/bootstrap.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/angular-bootstrap/ui-bootstrap-tpls-0.14.3.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/ng-table/dist/ng-table.js' %}"></script>
+
+        <script type="text/javascript"  src="{% static 'lib/bsDropdown.min.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'lib/d3.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/pie-chart/pie-chart.min.js' %}"></script>
+        <script type="text/javascript" src="{% static 'lib/angular-resource.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/script.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/test.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/cinder.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/ceilometer.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/glance.js' %}" ></script>
+        <script type="text/javascript" src="{% static 'js/neutron.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/instance.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/router.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/securitygroup.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/lb.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/fw.js' %}"></script>
+
+        <script type="text/javascript" src="{% static 'js/user.js' %}"></script>
+        <script type="text/javascript" src="{% static 'js/project.js' %}"></script>
+    </body>
+</html>

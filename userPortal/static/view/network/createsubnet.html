@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Subnet</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name:</span>
+                    <span class="text"><input ng-model="data.name" ng-disabled="true"></span>
+                </div>
+                <div>
+                    <span>NetWork ID</span>
+                    <span class="text"><input ng-model="data.id" ng-disabled="true"></span>
+                </div>
+                <div>
+                    <span>Project ID</span>
+                    <span class="text"><input ng-model="data.tenant_id" ng-disabled="true" ></span>
+                </div>
+
+                <div>
+                    <span>SubNet Name:</span>
+                    <span class="text"><input ng-model="subnet.name" ></span>
+                </div>
+                <div>
+                    <span>Network Address:</span>
+                    <span class="text"><input ng-model="subnet.address" ></span>
+                </div>
+                <div>
+                    <span>IP Version:</span>
+                    <!--<span class="text"><input ng-model="subnet.version" ></span>-->
+                    <span class="text">
+                        <select width="200px" class="input-block-level" ng-model="subnet.version">
+                            <option value="4" selected="selected">Ipv4</option>
+                        </select>
+                    </span>
+                </div>
+                <div>
+                    <span>Gateway IP:</span>
+                    <span class="text"><input ng-model="subnet.gateway" ></span>
+                </div>
+
+                <div>
+                    <span>Enable DHCP</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="subnet.enable_dhcp">
+                            <option value="YES" selected="selected">YES</option>
+                            <option value="NO">NO</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Allocation Pools </span>
+                    <span class="text"><textarea ng-model="subnet.allocation_pools" ></textarea>
+                    </span>
+                </div>
+
+                <div>
+                    <span>DNS Name Servers</span>
+                    <span class="text"><textarea ng-model="subnet.dns_nameservers" ></textarea>
+                    </span>
+                </div>
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="createSub()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

@@ -1,0 +1,59 @@
+
+    <div ng-controller="routerCtrl" class="container">
+        <h1>Router</h1>
+	    <ol class="breadcrumb">
+		    <li><a href="#">Routers</a></li>
+		    <li class="acttive">list routers</li>
+	    </ol>
+        <div class="container">
+            <input type="text" ng-model="search.name">
+            <button type="button" class="btn btn-primary" ng-click="createRouterBtn()" ng-controller="createRouterCtrl">
+	        <span><i class="fa fa-user-plus"></i> Create Router</span>
+	        </button>
+	        <button type="button" class="btn btn-danger" ng-click="deleteRouter()"   ng-controller="delRouterCtrl" ng-disabled="selected.length==0">
+	        <span><i class="fa fa-close"></i> Delete Router</span>
+	        </button>
+            <!--<button type="button" class="btn btn-primary" ng-click="addSubnet()" ng-controller="addSubCtrl" ng-disabled="selected.length==0">-->
+	        <!--<span><i class="fa fa-close"></i> Add Subnet</span>-->
+	        <!--</button>-->
+        </div>
+
+        <div>
+            <table class="table table-striped">
+            <thead>
+              <tr>
+                <th><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+                <!--<th><a href="" ng-click="order('id')">ID</a></th>-->
+                <th><a href="" ng-click="order('name')">Name</a></th>
+                <th><a href="" ng-click="order('status')">Status</a> </th>
+                <th><a href="" ng-click="order('external_gateway_info')">Net</a> </th>
+                <th><a href="" ng-click="order('admin_state_up')">Admin State</a> </th>
+                <!--<th><a href="" ng-click="order('tenant_id')">Project</a> </th>-->
+                <th><a href="" ng-click="order('action')">Edit</a> </th>
+                <th><a href="" ng-click="order('action')">Add Router</a> </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr ng-repeat="router in routers | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=ip.id name="checkbox" value="checkbox"   ng-checked="isSelected(router.id)" ng-click="updateSelection($event,router.id)"/></td>
+                <!--<td>[[ network.id]]</td>-->
+                <td>[[ router.name]]</td>
+                <td>[[ router.status]]</td>
+                <td>[[ router.external_gateway_info]]</td>
+                <td>[[ router.admin_state_up]]</td>
+                <!--<td>[[ network.tenant_id]]</td>-->
+                <td>
+                    <input type="button" value="Edit" class="btn btn-primary" ng-controller="editRouterCtrl" ng-click="editRouter(router)"/>
+                </td>
+                <td>
+                    <input type="button" value="Add Interface" class="btn btn-primary"  ng-click="addInterface(router)" ng-controller="addInterfaceCtrl"/>
+                </td>
+              </tr>
+            </tbody>
+            </table>
+            <pagination total-items="totalItems" ng-model="currentPage"
+                max-size="5" boundary-links="true"
+                items-per-page="numPerPage" class="pagination-sm">
+            </pagination>
+        </div>
+    </div>

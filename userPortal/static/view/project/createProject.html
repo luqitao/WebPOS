@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>创建项目</title>
+    <link rel='stylesheet' href="../static/css/createUser.css">
+</head>
+<body>
+ <div>
+            <h2>创建项目</h2>
+     <hr>
+            <form name="cubeForm">
+                <div class="cubeFormleft">
+                    <div>
+                        <span>名称*</span>
+                        <span class="text"><input ng-model="project_data.name" type="text" placeholder=""  required></span>
+                    </div>
+                    <div>
+                        <span>描述</span>
+                        <span class="text"><input ng-model="project_data.description" type="text" placeholder=""  >
+                        </span>
+                    </div>
+
+                    <div>
+                        <span>项目成员</span>
+                         <span class="text" ng-controller="projectCtr">
+                             <select  id="sel"   class="input-block-level" ng-model="project_data.project_user_id"   ng-options="obj.id as obj.name for obj in user_dropdown_list" required>
+                             </select>
+                         </span>
+                    </div>
+
+                    <div>
+                    <span>&nbsp; &nbsp;激活 </span>&nbsp; &nbsp;<input type="checkbox" ng-model="project_data.enabled"/>
+
+                    <span class="text"></span>
+                    </div>
+
+               </div>
+                <div class="cubeFormright">创建项目,并设置项目属性<br></div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default " ng-click="cancelCreateProject()">取消 </button>
+                <button class="btn btn-default" ng-click="createProject()">创建项目 </button>
+            </span>
+        </div>
+<!--
+    <ul class="nav nav-tabs">
+      <li role="presentation" class="active"><a href="#a" data-toggle="tab">Home</a></li>
+      <li role="presentation"><a href="#b" data-toggle="tab">Profile</a></li>
+      <li role="presentation"><a href="#c" data-toggle="tab">Messages</a></li>
+    </ul>
+ <div class="tab-content">
+    <div  class="tab-pane fade in active" id="a">1</div>
+    <div class="tab-pane fade" id="b">2</div>
+    <div class="tab-pane fade" id="c">3</div>
+     </div>
+-->
+</body>
+</html>

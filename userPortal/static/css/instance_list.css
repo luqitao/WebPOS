@@ -1,0 +1,7 @@
+div.container{
+    text-align: initial;
+}
+
+tbody > tr > td > div > button.dropdown-toggle {
+	height: 34px;
+}

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Update Firewall</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>ID</span>
+                    <span class="text"><input ng-model="data.id" ng-disabled="true" ></span>
+                </div>
+                <div>
+                    <span>Name:</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>Description</span>
+                    <span class="text"><input ng-model="data.description" ></span>
+                </div>
+
+                <div>
+                    <span>Policy*</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level" ng-model="data.policy" ng-options="x.id as x.name for x in policys ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Admin State</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.state">
+                            <option value="UP" selected="selected">UP</option>
+                            <option value="DOWN">DOWN</option>
+                        </select>
+                    </span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="updateFirewall()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

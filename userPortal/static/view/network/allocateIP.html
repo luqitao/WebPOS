@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Allocate Floating IP</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Pool</span>
+                    <span class="text">
+                        <div ng-controller="poolCtrl">
+                            <select class="input-block-level" ng-model="data.pool" ng-options="x.name for x in pools ">
+                            <option value="">请选择</option>
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <!--<div>-->
+                    <!--<span>Network Type</span>-->
+                    <!--<span class="text">-->
+                        <!--<select class="input-block-level" ng-model="data.type">-->
+                            <!--<option value="local">local</option>-->
+                            <!--<option value="vlan">vlan</option>-->
+                        <!--</select>-->
+                    <!--</span>-->
+                <!--</div>-->
+                <!--<div>-->
+                    <!--<span>Admin State</span>-->
+                    <!--<span class="text">-->
+                        <!--<select class="input-block-level" ng-model="data.state">-->
+                            <!--<option value="up" selected="selected">UP</option>-->
+                            <!--<option value="down">Down</option>-->
+                        <!--</select>-->
+                    <!--</span>-->
+                <!--</div>-->
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="allocateIP()">OK </button>
+            </span>
+ </div>
+</body>
+</html>

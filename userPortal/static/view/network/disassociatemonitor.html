@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Disassociate Monitor</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Pool Name</span>
+                    <span class="text"><input ng-model="data.name" ng-disabled = "true" ></span>
+                </div>
+
+                <div>
+                    <span>Monitor to Disassociate</span>
+                    <span class="text">
+                        <div >
+                            <select class="input-block-level" ng-model="data.monitor" ng-options="x.id as x.name for x in monitors ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="disassociateMonitor()">Disassociate </button>
+            </span>
+        </div>
+</body>
+</html>

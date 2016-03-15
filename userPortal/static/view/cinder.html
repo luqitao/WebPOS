@@ -1,0 +1,159 @@
+<div>
+    <div id="title">
+        <h1>Volumes</h1>
+    </div>
+    <ul class="nav nav-tabs">
+        <li class="active"><a href="#a" data-toggle="tab" data-target="#a">Volumes</a></li>
+        <li><a href="#b" data-toggle="tab" data-target="#b">Volume Snapshots</a></li>
+    </ul>
+    <br />
+
+    <div class="tab-content">
+        <div  class="tab-pane fade in active" id="a">
+            <div class="option">
+                <input ng-model="search" placeholder="Search">
+                <button id="gobutton" type="submit" ng-click="createVolume()"  class="btn btn-primary">
+                    <span><i class="fa fa-user-plus"></i> Create Volume</span>
+                </button>
+                <button id="gobutton" type="submit" ng-click="deleteVolume()" class="btn btn-danger" ng-disabled="selected.length==0">
+                    <span><i class="fa fa-close"></i> Delete Volume</span>
+                </button>
+            </div>
+            <br />
+            <table id='volumes_tab' ng-table="volumetableParams" class="table table-bordered table-striped" >
+                <thead>
+                <tr>
+                    <th><input type="checkbox" disabled/></th>
+                    <th ng-click="sort('id')">Id
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('description')">Description
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('size')">Size
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'size'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('status')">Status
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('volume_type')">Type
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'volume_type'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('attachments')">Attached To
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'attachments'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('availability_zone')">Availability Zone
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'availability_zone'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('bootable')">Bootable
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'bootable'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('encrypted')">Encrypted
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'encrypted'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th>Actions</th>
+                    <th>Attachment</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="volume in $data | filter:search | orderBy:sortKey:reverse">
+                        <td><input type="checkbox" ng-checked="isSelected(volume.id)" ng-click="updateSelection($event,volume.id)"/></td>
+                        <td>[[ volume.id ]]</td>
+                        <td>[[ volume.description ]]</td>
+                        <td>[[ volume.size ]]</td>
+                        <td>[[ volume.status ]]</td>
+                        <td>[[ volume.volume_type ]]</td>
+                        <td><p ng-hide="volume.attachments==''">Attched to [[ volume.attachments[0].server_id ]] on [[ volume.attachments[0].device ]]<p></td>
+                        <td>[[ volume.availability_zone ]]</td>
+                        <td>[[ volume.bootable ]]</td>
+                        <td>[[ volume.encrypted ]]</td>
+                        <td>
+<!--                            <div class="btn-group">
+                                <button id="gobutton" type="submit" ng-click="editVolume(volume)" class="btn btn-default">Edit Volume</button>
+                            </div>
+                            <div class="btn-group">
+                                <button id="gobutton" type="submit" ng-click="createSnapshot(volume)" class="btn btn-default">Create Snapshot</button>
+                            </div>
+-->
+                            <select ng-model="volumeAction" class="form-control" ng-change="volumeActionchange(volumeAction, volume)">
+                                <option value="Edit Volume">Edit Volume</option>
+                                <option value="Create Snapshot">Create Snapshot</option>
+                            </select>
+
+                        </td>
+                        <td>
+                            <button id="gobutton" type="submit" ng-click="attachments(volume)" class="btn btn-default">Manage Attachments</button>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="12">
+                            <p>Displaying [[ $data.length ]]/[[ volumes.length ]] items</p>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+
+        <div class="tab-pane fade" id="b">
+            <div class="option">
+                <input ng-model="search" placeholder="Search">
+                <button id="gobutton" type="submit" ng-click="deleteSnapshot()" class="btn btn-danger" ng-disabled="selected.length==0">
+                    <span><i class="fa fa-close"></i> Delete Snapshot</span>
+                </button>
+            </div>
+            <br />
+            <table id='snapshots_tab' ng-table="snapshottableParams" class="table table-bordered table-striped" >
+                <thead>
+                <tr>
+                    <th><input type="checkbox" disabled/></th>
+                    <th ng-click="sort('name')">Name
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'name'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('description')">Description
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'description'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('size')">Size
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'size'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('status')">Status
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'status'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th ng-click="sort('volume_id')">Volume_id
+                        <span class="glyphicon sort-icon" ng-show="sortKey == 'id'" ng-class="{'glyphicon-chevron-up':reverse,'glyphicon-chevron-down':!reverse}"></span>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="snapshot in $data | filter:search | orderBy:sortKey:reverse">
+                        <td><input type="checkbox" ng-checked="isSelected(snapshot.id)" ng-click="updateSelection($event,snapshot.id)"/></td>
+                        <td>[[ snapshot.name ]]</td>
+                        <td>[[ snapshot.description ]]</td>
+                        <td>[[ snapshot.size ]]</td>
+                        <td>[[ snapshot.status ]]</td>
+                        <td>[[ snapshot.volume_id ]]</td>
+                        <td>
+<!--                            <div class="btn-group">
+                                <button id="gobutton" type="submit" ng-click="editSnapshot(snapshot)" class="btn btn-default">Edit Snapshot</button>
+                            </div>
+-->
+                            <select ng-model="snapshotAction" class="form-control" ng-change="snapshotActionchange(snapshotAction, snapshot)">
+                                <option value="Edit Snapshot">Edit Snapshot</option>
+                                <option value="Create Volume">Create Volume</option>
+                            </select>
+                        </td>
+                    </tr>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <td colspan="7">
+                            <p>Displaying [[ $data.length ]]/[[ snapshots.length ]] items</p>
+                        </td>
+                    </tr>
+                </tfoot>
+            </table>
+        </div>
+    </div>
+</div>

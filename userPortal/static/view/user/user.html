@@ -1,0 +1,52 @@
+<div class="container">
+	<h1>User</h1>
+	<ol class="breadcrumb">
+		<li><a href="#">User</a></li>
+		<li class="active">User List</li>
+	</ol>
+	<div id="body-content" class="container">
+
+	    <button type="button" class="btn btn-primary" ng-controller="createUserCtrl" ng-click="createUserButtonClicked()" >
+	        <span><i class="fa fa-user-plus"></i> Add User</span>
+	    </button>
+	    <button type="button" class="btn btn-danger" ng-controller="deleteUserCtrl" ng-click="deleteUserButtonClicked()" ng-disabled="selected.length==0" >
+	        <span><i class="fa fa-close"></i> Delete User</span>
+	    </button>
+        <td bgcolor="#00BCD4">Filter By User Name =>>  </td>
+             <td> <input type="text" ng-model="search.name" /></td>
+		<table class="table table-striped" >
+			<thead>
+            <tr>
+            <th width="40px"><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+             <th>
+                <a href="" ng-click="order('name')">Name</a>
+             </th>
+             <th><a href="" ng-click="order('email')"> Email</a> </th>
+             <th><a href="" ng-click="order('id')">User Id</a> </th>
+               <th><a href="" ng-click="order('enabled')">Activity</a> </th>
+               <th><a href="" ng-click="order('action')">Action</a> </th>
+           </tr>
+			</thead>
+			<tbody>
+            <tr ng-repeat="user in userList | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=user.id name="checkbox" value="checkbox"   ng-checked="isUserSelected(user.id)" ng-click="updateUserSelection($event,user.id)"/></td>
+             <td> [[ user.name]]</td>
+            <td>[[ user.email]]</td>
+               <td>[[ user.id]]</td>
+             <td>[[user.enabled]]</td>
+                <td>
+					<div class="btn-group">
+						  	<button type="button" class="btn btn-default" ng-controller="editUserCtrl" ng-click="editUserButtonClicked(user)">Edit </button>
+                    </div>
+                </td>
+
+            </tr>
+			</tbody>
+		</table>
+        <pagination total-items="totalItems" ng-model="currentPage"
+             max-size="5" boundary-links="true"
+            items-per-page="numPerPage" class="pagination-sm">
+     </pagination>
+	</div>
+
+</div>

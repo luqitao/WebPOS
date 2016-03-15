@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Member</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Pool:</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level" ng-model="data.pool" ng-options="x.id as x.name for x in Pools ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+
+                <div>
+                    <span>Members</span>
+                    <span class="text">
+                        <div>
+                            <select class="input-block-level"  multiple="multiple" ng-model="data.member" ng-options="x.id as x.name for x in Members ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Weight</span>
+                    <span class="text"><input ng-model="data.weight" type="number" min="1" placeholder="" required></span>
+                </div>
+
+               <div>
+                    <span>Protocol Port</span>
+                    <span class="text"><input ng-model="data.port" type="number" min="1" placeholder="" required></span>
+                </div>
+
+                <div>
+                    <span>Admin State</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.admin_state_up">
+                            <option value="UP">UP</option>
+                            <option value="DOWN">DOWN</option>
+                        </select>
+                    </span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addMember()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

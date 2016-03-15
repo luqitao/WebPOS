@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Interface</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Router Name</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>Router ID</span>
+                    <span class="text"><input ng-model="data.id" ></span>
+                </div>
+                <div>
+                    <span>Subnet</span>
+                    <span class="text">
+                        <div ng-controller="subnetCtrl">
+                            <select class="input-block-level" ng-model="data.subnet" ng-options="x.id as x.name for x in subnets ">
+                            </select>
+                        </div>
+                    </span>
+                </div>
+                <div hidden="true">
+                    <span>IP Address</span>
+                    <span class="text"><input ng-model="data.ipaddress" ></span>
+                </div>
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addInterFace()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

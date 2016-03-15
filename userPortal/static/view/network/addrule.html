@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+     <link rel='stylesheet' href="../static/css/createImage.css">
+</head>
+<body>
+ <div class="div">
+            <h2>Add Rule</h2>
+            <form name="cubeForm">
+                <div>
+                    <span>Name</span>
+                    <span class="text"><input ng-model="data.name" ></span>
+                </div>
+                <div>
+                    <span>Description</span>
+                    <span class="text"><input ng-model="data.description" ></span>
+                </div>
+
+                <div>
+                    <span>Protocol</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.protocol">
+                            <option value="TCP">TCP</option>
+                            <option value="UDP">UDP</option>
+                            <option value="ICMP">ICMP</option>
+                            <option value="ANY">ANY</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Action</span>
+                    <span class="text">
+                        <select class="input-block-level" ng-model="data.action">
+                            <option value="ALLOW">ALLOW</option>
+                            <option value="DENY">DENY</option>
+                        </select>
+                    </span>
+                </div>
+
+                <div>
+                    <span>Source IP Address/Subnet</span>
+                    <span class="text"><input ng-model="data.source_ip_address" ></span>
+                </div>
+                <div>
+                    <span>Destination IP Address/Subnet</span>
+                    <span class="text"><input ng-model="data.destination_ip_address" ></span>
+                </div>
+
+                <div>
+                    <span>Source Port/Port Range</span>
+                    <span class="text"><input ng-model="data.source_port" ></span>
+                </div>
+                <div>
+                    <span>Destination Port/Port Range</span>
+                    <span class="text"><input ng-model="data.destination_port" ></span>
+                </div>
+
+                <div>
+                    <span>Shared</span>
+                    <input type="checkbox" ng-model="data.shared" >
+                    <span class="text"></span>
+                </div>
+
+                <div>
+                    <span>Enable</span>
+                    <input type="checkbox" ng-model="data.enabled" >
+                    <span class="text"></span>
+                </div>
+
+
+            </form>
+            <span class="marginBottom">
+                <button class="btn btn-default unusable" ng-click="cancel()">Cancel </button>
+                <button class="btn btn-default" ng-click="addRule()">OK </button>
+            </span>
+        </div>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<div class="container">
+	<h1>Project</h1>
+	<ol class="breadcrumb">
+		<li><a href="#">Project</a></li>
+		<li class="active">Project List</li>
+	</ol>
+	<div id="body-content" class="container">
+
+	    <button type="button" class="btn btn-primary" ng-controller="createProjectCtrl" ng-click="createProjectButtonClicked()" >
+	        <span><i class="fa fa-user-plus"></i> Add Project</span>
+	    </button>
+	    <button type="button" class="btn btn-danger" ng-controller="deleteProjectCtrl" ng-click="deleteProjectButtonClicked()" ng-disabled="selected.length==0" >
+	        <span><i class="fa fa-close"></i> Delete Project</span>
+	    </button>
+        <td bgcolor="#00BCD4">Filter By Porject Name =>>  </td>
+             <td> <input type="text" ng-model="search.name" /></td>
+		<table class="table table-striped" >
+			<thead>
+            <tr>
+            <th width="40px"><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+             <th>
+                <a href="" ng-click="order('name')">Name</a>
+             </th>
+             <th><a href="" ng-click="order('description')">Description</a> </th>
+             <th><a href="" ng-click="order('id')">Project ID</a> </th>
+               <th><a href="" ng-click="order('enabled')">Enabled</a> </th>
+               <th><a href="" ng-click="order('action')">Actions</a> </th>
+           </tr>
+			</thead>
+			<tbody>
+            <tr ng-repeat="project in projectList | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+                <td width="40px"><input type="checkbox" id=project.id name="checkbox" value="checkbox"   ng-checked="isProjectSelected(project.id)" ng-click="updateProjectSelection($event,project.id)"/></td>
+             <td> [[ project.name]]</td>
+            <td>[[ project.description]]</td>
+            <td>[[ project.id]]</td>
+             <td>[[project.enabled]]</td>
+                <td>
+					<div class="btn-group">
+						  	<button type="button" class="btn btn-default" ng-controller="editProjectCtrl" ng-click="editProjectButtonClicked(project)">Edit </button>
+                    </div>
+                </td>
+
+            </tr>
+			</tbody>
+		</table>
+        <pagination total-items="totalItems" ng-model="currentPage"
+             max-size="5" boundary-links="true"
+            items-per-page="numPerPage" class="pagination-sm">
+     </pagination>
+	</div>
+
+</div>

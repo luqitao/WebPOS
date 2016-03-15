@@ -1,0 +1,68 @@
+<div class="container">
+	<h1>Instances</h1>
+	<ol class="breadcrumb">
+		<li><a href="#">Instances</a></li>
+		<li class="active">Instance List</li>
+	</ol>
+	<div id="body-content" class="container">
+	    <button type="button" class="btn btn-primary" ng-controller="launchInstanceCtrl" ng-click="launchButtonClicked()" >
+	        <span><i class="fa fa-user-plus"></i> Launch Instance</span>
+	    </button>
+	    <button type="button" class="btn btn-danger" ng-controller="terminateInstanceCtrl" ng-click="terminateButtonClicked()" ng-disabled="selected.length==0" >
+	        <span><i class="fa fa-close"></i> Terminate Instance</span>
+	    </button>
+         <td bgcolor="#00BCD4">Filter By Instance Name =>>  </td>
+        <td> <input type="text" ng-model="search.name" /></td>
+		<table class="table table-striped" >
+			<thead>
+            <tr>
+            <th width="40px"><input type="checkbox" disabled  name="checkbox" value="checkbox" /></th>
+             <th>
+                <a href="" ng-click="order('name')">Instance Name</a>
+             </th>
+             <th><a href="" ng-click="order('image')"> Image</a> </th>
+             <th><a href="" ng-click="order('status')">IP Address</a> </th>
+               <th><a href="" ng-click="order('public')">Config</a> </th>
+               <th><a href="" ng-click="order('protect')">Key Pair</a> </th>
+               <th><a href="" ng-click="order('status')">Status</a> </th>
+               <th><a href="" ng-click="order('format')">Availablity Zone</a> </th>
+               <th><a href="" ng-click="order('config')">Task</a> </th>
+               <th><a href="" ng-click="order('format')">Electric Status</a> </th>
+               <th><a href="" ng-click="order('config')">From Created</a> </th>
+               <th><a href="" ng-click="order('action')">Action</a> </th>
+           </tr>
+			</thead>
+			<tbody>
+            <tr ng-repeat="instance in instanceList | orderBy:predicate:reverse | filter:paginate| filter:search" ng-class-odd="'odd'">
+             <td width="40px"><input type="checkbox" id=[[instance.id]] name=[[instance.name]] value="checkbox"   ng-checked="isInstanceSelected(instance.id)" ng-click="updateInstanceSelection($event,instance.id)"/></td>
+             <td> [[ instance.name]]</td>
+             <td>[[ instance.image]]</td>
+             <td>[[ instance.addresses]]</td>
+             <td>[[ instance.config]]</td>
+             <td>[[ instance.key_name]]</td>
+             <td>[[ instance.status]]</td>
+             <td>[[ instance.availability_zone]]</td>
+             <td>[[ instance.task]]</td>
+             <td>[[ instance.power_state]]</td>
+             <td>[[ instance.created]]</td>
+                <td>
+					<!-- <div class="btn-group"> xxxxxx:[[data]]  [[selectYear]]-->
+                 <div ng-controller="InstanceActionController">
+                    <div bs-dropdown
+                         bs-dropdown-display="MyDropDown"
+                         bs-dropdown-items="action"
+                         ng-model="selectAction"
+                         ng-change="changeAction(instance)"></div>
+                    </div>
+                </td>
+
+            </tr>
+			</tbody>
+		</table>
+        <pagination total-items="totalItems" ng-model="currentPage"
+             max-size="5" boundary-links="true"
+            items-per-page="numPerPage" class="pagination-sm">
+     </pagination>
+	</div>
+
+</div>
